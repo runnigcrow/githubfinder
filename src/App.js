@@ -1,11 +1,22 @@
 import React, {Component} from 'react';
 import Navbar from './components/layout/Navbar';//GithubSearch/github_finder/src/components/layout/Navbar.js
 import Users from './components/users/Users';
+import axios from 'axios'// api fetching package used to 
 import './App.css';
 
 
 class App	extends Component {
-	foo2 = ()=>'Bars'
+	state={
+		users:[],
+		loading: false,
+	}
+	
+	async componentDidMount(){ //runs code as app starts 
+		this.setState({loading:true});
+		const res = await axios.get('https://api.github.com/users');
+		this.setState({users:res.data,loading:false});
+	}
+	
   render(){
 		// const name = 'John Doe';
 		// const foo = ()=>'Bar';
@@ -31,7 +42,7 @@ class App	extends Component {
 			<div className="App">
 				<Navbar/>
 				<div className='container'>
-					<Users/>
+					<Users loading={this.state.loading} users={this.state.users}/>
 				</div>
 				
     	</div>
