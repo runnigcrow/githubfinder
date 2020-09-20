@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import Navbar from './components/layout/Navbar';//GithubSearch/github_finder/src/components/layout/Navbar.js
-import UserItem from './components/users/UserItem';
+import Users from './components/users/Users';
 import './App.css';
 
 
@@ -30,7 +30,10 @@ class App	extends Component {
 			
 			<div className="App">
 				<Navbar/>
-				<UserItem/>
+				<div className='container'>
+					<Users/>
+				</div>
+				
     	</div>
   	);
 	}
