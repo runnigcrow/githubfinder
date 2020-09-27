@@ -8,7 +8,8 @@ const User = ({ user, loading, getUser, getUserRepos, repos, match }) =>{
 	useEffect(() => { // use instead of didmount
 		getUser(match.params.login)
 		getUserRepos(match.params.login)
-	});// empty brackets is used to mimic didmount to stop it from looping  
+		// eslint-disable-next-line
+	}, []);// the bracket stop effect from looping and making tons of requests
 	
 	const{
 		name,
